@@ -1,0 +1,2 @@
+python-ldap>=3.4.4
+rich>=13.5.3
