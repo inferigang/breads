@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='breads-ad',
-    version='1.0.3',
+    version='1.0.3a',
     author='oppsec (inferigang)',
     author_email='opps3c@gmail.com',
     description='Breaking Active Directory Security (BREADS) is a tool design to attack Active Directory environments',
@@ -11,7 +11,8 @@ setup(
 
     install_requires=[
         'python-ldap >= 3.4.4',
-        'rich >= 13.5.3'
+        'rich >= 13.5.3',
+        'requests >= 2.31.0'
     ],
 
     packages=find_packages(),
