@@ -15,7 +15,7 @@
 ___
 <br>
 
-⚠️ We're projecting to move the project to PyPI to allow you guys to install and use BREADS just installing with `pip` or `pipx`.
+⚠️ In the future, we will fix some issues and the project will be available on PyPI, allowing it to be installed via `pipx` or `pip`
 
 <br>
 
