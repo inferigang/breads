@@ -17,10 +17,10 @@ def get_random_color() -> str:
 
 def get_version() -> None:
     ''' Prints the current version of BREADS '''
-    
+
     current_version = """
 Breaking Active Directory Security
-v1.0-dev ~ by: inferigang"""
+v1.0.3b (beta) ~ by: inferigang"""
 
     print(f"[bold {get_random_color()}]{current_version}[/]\n")
 
