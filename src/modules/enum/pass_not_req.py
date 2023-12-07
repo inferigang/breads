@@ -3,7 +3,7 @@ from rich import print
 import json
 import ldap
 
-from handlers.ldap_connect import connect_and_fetch
+from src.handlers.ldap_connect import connect_and_fetch
 
 def get_pass_not_req() -> None:
 

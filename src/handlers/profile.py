@@ -6,7 +6,7 @@ from uuid import uuid4
 
 import json
 
-from helpers.user import BREADS_FOLDER, get_current_profile
+from src.helpers.user import BREADS_FOLDER, get_current_profile
 
 PROFILE_UUID = uuid4().hex
 

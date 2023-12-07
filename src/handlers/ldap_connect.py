@@ -3,8 +3,8 @@ from rich import print
 import json
 import ldap
 
-from handlers.profile import BREADS_FOLDER
-from helpers.user import get_current_profile
+from src.handlers.profile import BREADS_FOLDER
+from src.helpers.user import get_current_profile
 
 def connect_and_fetch(search_filter):
     if get_current_profile() == 'None':

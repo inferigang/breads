@@ -1,16 +1,18 @@
+#!/usr/bin/python3
+
 from cmd import Cmd
 from rich import print
 
-from ui.banner import get_banner
-from handlers.profile import create_profile_folder, load_profile
-from helpers.user import get_current_profile
+from src.ui.banner import get_banner
+from src.handlers.profile import create_profile_folder, load_profile
+from src.helpers.user import get_current_profile
 
-from modules.enum.domain_controllers import get_domain_controllers
-from modules.enum.administrators import get_admins
-from modules.enum.pass_not_req import get_pass_not_req
-from modules.enum.pass_pol import get_pass_policy
-from modules.enum.all_users import get_all_users
-from modules.enum.disabled_accounts import get_all_disabled_users
+from src.modules.enum.domain_controllers import get_domain_controllers
+from src.modules.enum.administrators import get_admins
+from src.modules.enum.pass_not_req import get_pass_not_req
+from src.modules.enum.pass_pol import get_pass_policy
+from src.modules.enum.all_users import get_all_users
+from src.modules.enum.disabled_accounts import get_all_disabled_users
 
 class BreadsPrompt(Cmd):
 
