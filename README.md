@@ -13,9 +13,6 @@
 </p>
 
 ___
-<br>
-
-⚠️ In the future, we will fix some issues and the project will be available on PyPI, allowing it to be installed via `pipx` or `pip`
 
 <br>
 
@@ -23,6 +20,10 @@ ___
 
 <p> A quick guide on how to install and use BREADS. </p>
 
+### Install with pipx (recommended)
+- `pipx install git+https://github.com/inferigang/breads --include-deps`
+
+### Not recommended
 1. Clone the repository with: `git clone https://github.com/inferigang/breads.git`
 2. Install the libraries with: `pip3 install -r requirements.txt` or `python3 setup.py install`
 3. Run BREADS with: `python3 src/main.py`

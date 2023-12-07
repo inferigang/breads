@@ -1,12 +1,17 @@
 from setuptools import setup, find_packages
 
+from pathlib import Path
+this_directory = Path(__file__).parent
+
 setup(
     name='breads-ad',
-    version='1.0.3b',
+    version='1.0.4',
     author='oppsec (inferigang)',
     author_email='opps3c@gmail.com',
     description='Breaking Active Directory Security (BREADS) is a tool design to attack Active Directory environments',
     readme='README.md',
+    long_description = (this_directory / "README.md").read_text(),
+    long_description_content_type='text/markdown',
     url='https://github.com/inferigang/breads',
 
     install_requires=[
