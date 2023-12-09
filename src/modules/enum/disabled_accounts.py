@@ -6,12 +6,11 @@ import ldap
 from src.handlers.ldap_connect import connect_and_fetch
 
 def get_all_disabled_users() -> None:
-
     search_filter = f'(&(objectCategory=person)(objectClass=user)(userAccountControl:1.2.840.113556.1.4.803:=2))'
     query = connect_and_fetch(search_filter)
 
     if query:
-        print(f"[yellow][!] Getting all disabled users on the domain [/]")
+        print(f"[yellow][!] Getting all disabled users on the domain [/]\n")
 
         for dn, attrs in query:
             for attr_name in attrs:

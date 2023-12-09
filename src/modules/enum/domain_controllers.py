@@ -6,12 +6,11 @@ import ldap
 from src.handlers.ldap_connect import connect_and_fetch
 
 def get_domain_controllers() -> None:
-
     search_filter = '(primaryGroupID=516)' # 516 is the Primary ID for Domain Controllers computers
     query = connect_and_fetch(search_filter)
 
     if query:
-        print(f"[yellow][!] Getting domain controllers name... [/]")
+        print(f"[yellow][!] Getting domain controllers name... [/]\n")
 
         for dn, attrs in query: # dn is just here to be possible to get the attrs from the query
             for attr_name in attrs:
