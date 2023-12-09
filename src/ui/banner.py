@@ -10,7 +10,7 @@ def get_random_color() -> str:
     ''' Returns a random color from a predefined list '''
     
     color_list: list = [
-        "cyan", "yellow", "red"
+        "cyan", "yellow", "red", "blue", "white"
     ]
     
     return choice(color_list)
@@ -20,7 +20,7 @@ def get_version() -> None:
 
     current_version = """
 Breaking Active Directory Security
-v1.0.4 (beta) ~ by: inferigang"""
+v1.0.5 (beta) ~ by: inferigang"""
 
     print(f"[bold {get_random_color()}]{current_version}[/]\n")
 
@@ -28,12 +28,9 @@ def get_banner() -> None:
     ''' Return BREADS banner url '''
 
     banner_list: list = [
-        "https://pastebin.com/raw/tgZ4qpKD",
-        "https://pastebin.com/raw/8RZ1Lgwf",
-        "https://pastebin.com/raw/CUJJ1KJu",
-        "https://pastebin.com/raw/dYLkjP83",
-        "https://pastebin.com/raw/GWgXMfty",
-        "https://pastebin.com/raw/wvPRwqSZ"
+        "https://pastebin.com/raw/mhEASUuU",
+        "https://pastebin.com/raw/CFEzbcVh",
+        "https://pastebin.com/raw/yVe8AAud"
     ]
 
     banner = choice(banner_list)

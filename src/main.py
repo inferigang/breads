@@ -14,6 +14,8 @@ from src.modules.enum.pass_pol import get_pass_policy
 from src.modules.enum.all_users import get_all_users
 from src.modules.enum.disabled_accounts import get_all_disabled_users
 
+from src.modules.user.whoami import get_user_whoami
+
 class BreadsPrompt(Cmd):
 
     prompt = f"breads# "
@@ -35,6 +37,7 @@ class BreadsPrompt(Cmd):
             'get_pass_pol',
             'get_all_users',
             'get_all_disabled_users'
+            'whoami'
         ]
 
         return [i for i in _AVAILABLE_MODULES if i.startswith(text)]
@@ -83,6 +86,10 @@ class BreadsPrompt(Cmd):
     def do_get_all_disabled_users(self, inp):
         ''' Get all the disabled accounts from the domain '''
         get_all_disabled_users()
+
+    def do_whoami(self, inp):
+        ''' Get information from specific user account '''
+        get_user_whoami(inp)
 
     # Allow user to exit from the prompt using CTRL+D
     do_EOF = do_exit
