@@ -5,7 +5,6 @@ import ldap
 
 from src.handlers.ldap_connect import connect_and_fetch
 
-
 def get_user_whoami(inp) -> None:
 
     username: str = inp
@@ -27,7 +26,7 @@ def get_user_whoami(inp) -> None:
                     'sAMAccountName': 'Username', 
                     'distinguishedName': 'Account DN',
                     'memberOf': 'Account Groups',
-                    'userAccountControl': 'UAC'
+                    'userAccountControl': 'UAC Value'
                 }
 
                 for attribute, name in attributes_list.items():
