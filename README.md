@@ -59,5 +59,8 @@ ___
 
 <br>
 
+## 🤡 And a good meme...
+<img src="https://i.imgur.com/uPrUvi5.png" width=512>
+
 ## ⚠️ Warning
 - The developer is not responsible for any malicious use of this tool.

@@ -1,5 +1,15 @@
 # BREADS Changelog
 
+## 2023-12-09
+### 1.0.5
+- Removed unused code from pass_pol module file
+- Added 'whoami' command (ex: whoami Administrator)
+- Fixed a bug that 'load_profile' command does not check if .breasd directory exists
+- Changed banners ascii arts and added more colors to be used
+- Fixed typos in README.md (and added a meme created by a close friend)
+
+> Yes, we don't have the 1.0.4 changelog :/
+
 ## 2023-12-07
 ### 1.0.3
 - Now is possible to install use BREADS just calling 'breads-ad' bin
