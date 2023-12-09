@@ -40,12 +40,12 @@ ___
 <br>
 
 ## 🎥 Preview
-<img src="https://i.imgur.com/RuwMBuX.png">
+<img src="https://i.imgur.com/MaflBgp.png" width=780>
 
 <br>
 
 ## 📚 To-Do
-- [ ] Add more modules
+- [ ] Add more modules (WIP)
 - [ ] Improve profile creation
 - [ ] Store data on SGBD
 - [ ] Create a UI
