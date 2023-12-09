@@ -73,59 +73,66 @@ def create_profile_base_json() -> None:
 def load_profile() -> None:
     ''' Loads a profile based on user input if at least one exists on breads '''
 
-    folders_list = listdir(BREADS_FOLDER)
+    if not path.exists(BREADS_FOLDER):
+        print(f"[red][✖] .breads directory not found [/]\n")
+        return
 
-    if not folders_list:
-        print(f"[red][✖] No profiles found on .breads directory [/]\n")
+    if path.exists(BREADS_FOLDER):
 
-    for folder_name in folders_list:
-        print(f"[cyan]* {folder_name}[/]")
+        folders_list = listdir(BREADS_FOLDER)
 
-    load_user_input = Prompt.ask("\n# Type the profile name to be used")
-    for folder_name in folders_list:
+        if not folders_list:
+            print(f"[red][✖] No profiles found on .breads directory. Create one with 'create_profile' command[/]\n")
+            return
 
-        if(load_user_input == folder_name):
-            print(f"[green][✔] Profile [b]{folder_name}'s[/b] selected successfully![/]")
-            environ["breads_profile"] = folder_name
+        for folder_name in folders_list:
+            print(f"[cyan]* {folder_name}[/]")
 
-            profile_json_file = f"{BREADS_FOLDER}/{get_current_profile()}/settings.json"
+        load_user_input = Prompt.ask("\n# Type the profile name to be used")
+        for folder_name in folders_list:
 
-            with open(profile_json_file, 'r+') as json_file:
-                existing_data = json.load(json_file)
+            if(load_user_input == folder_name):
+                print(f"[green][✔] Profile [b]{folder_name}'s[/b] selected successfully![/]")
+                environ["breads_profile"] = folder_name
 
-                host = existing_data['host']
-                username = existing_data['username']
-                password = existing_data['password']
+                profile_json_file = f"{BREADS_FOLDER}/{get_current_profile()}/settings.json"
 
-                if(len(host) > 2): # If the length of host variable on profile json file is greater than 2 we can assume we already have an host defined
-                    print(f"[cyan]* Profile settings: {host}, {username}, {password}[/]")
-                    keep_data_input = Prompt.ask("[yellow][!] There is already information in this profile, do you want to keep it? [Y/N][/]")
-                    keep_data_input = keep_data_input.lower()
+                with open(profile_json_file, 'r+') as json_file:
+                    existing_data = json.load(json_file)
 
-                    if(keep_data_input == 'y'):
-                        print("[yellow][!] Keeping current data...[/]\n")
-                        return
-                    else:
-                        pass
+                    host     = existing_data['host']
+                    username = existing_data['username']
+                    password = existing_data['password']
 
-                target_host_input = Prompt.ask("# Type the target host (ex: 127.0.0.1)")
-                username_input = Prompt.ask("# Type the username to be used (example.lab/Administrator)")
-                password_input = Prompt.ask("# Type the password to be used")
+                    if(len(host) > 2): # If the length of host variable on profile json file is greater than 2 we can assume we already have an host defined
+                        print(f"[cyan]* Profile settings: {host}, {username}, {password}[/]")
+                        keep_data_input = Prompt.ask("[yellow][!] There is already information in this profile, do you want to keep it? [Y/N][/]")
+                        keep_data_input = keep_data_input.lower()
 
-                profile_data = {
-                    "host": target_host_input,
-                    "username": username_input,
-                    "password": password_input
-                }
+                        if(keep_data_input == 'y'):
+                            print("[yellow][!] Keeping current data...[/]\n")
+                            return
+                        else:
+                            pass
 
-                try:
-                    existing_data.update(profile_data)
-                    json_file.seek(0)
-                    json.dump(existing_data, json_file, ensure_ascii=False, indent=4)
-                    json_file.truncate()
+                    target_host_input = Prompt.ask("# Type the target host (ex: 127.0.0.1)")
+                    username_input    = Prompt.ask("# Type the username to be used (example.lab/Administrator)")
+                    password_input    = Prompt.ask("# Type the password to be used")
 
-                    print(f"[green][✔] Profile information stored successfully![/]\n")
-                except Exception as error:
-                    print(f"[red][✖] Error when trying to store profile information: {error}[/]")
-        else:
-            print(f"[red][✖] Profile not found, check if the name is correct")
+                    profile_data = {
+                        "host": target_host_input,
+                        "username": username_input,
+                        "password": password_input
+                    }
+
+                    try:
+                        existing_data.update(profile_data)
+                        json_file.seek(0)
+                        json.dump(existing_data, json_file, ensure_ascii=False, indent=4)
+                        json_file.truncate()
+
+                        print(f"[green][✔] Profile information stored successfully![/]\n")
+                    except Exception as error:
+                        print(f"[red][✖] Error when trying to store profile information: {error}[/]")
+            else:
+                print(f"[red][✖] Profile not found, check if the name is correct")
