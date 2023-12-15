@@ -14,7 +14,7 @@ from src.modules.enum.pass_pol import get_pass_policy
 from src.modules.enum.all_users import get_all_users
 from src.modules.enum.disabled_accounts import get_all_disabled_users
 from src.modules.enum.laps import get_laps
-
+from src.modules.enum.kerberoasting import get_kerberoastable
 from src.modules.user.whoami import get_user_whoami
 
 class BreadsPrompt(Cmd):
@@ -40,6 +40,7 @@ class BreadsPrompt(Cmd):
             'get_all_disabled_users'
             'whoami'
             'laps'
+            'kerberoasting'
         ]
 
         return [i for i in _AVAILABLE_MODULES if i.startswith(text)]
@@ -96,6 +97,12 @@ class BreadsPrompt(Cmd):
     def do_laps(self, inp):
         ''' Get LAPS information from all computers or one specific '''
         get_laps(inp)
+
+    def do_kerberoasting(self, inp):
+        ''' Search for kerberoastable users with filter and ignore krbtgt'''
+
+        get_kerberoastable()
+
 
 
     # Allow user to exit from the prompt using CTRL+D
