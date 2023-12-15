@@ -6,6 +6,8 @@ import ldap
 from src.handlers.ldap_connect import connect_and_fetch
 
 def get_all_users() -> None:
+    ''' List all usernames from the domain'''
+
     search_filter = f'(&(objectCategory=person)(objectClass=user))'
     query = connect_and_fetch(search_filter)
 

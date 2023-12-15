@@ -6,7 +6,7 @@ import ldap
 from src.handlers.ldap_connect import connect_and_fetch
 
 def get_user_whoami(inp) -> None:
-
+    ''' Return information from a specific user from the domain (sAMAccountName, distinguishedName, Groups, and UAC value)'''
     username: str = inp
 
     if len(username) == 0:

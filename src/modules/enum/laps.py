@@ -6,6 +6,7 @@ import ldap
 from src.handlers.ldap_connect import connect_and_fetch
 
 def get_laps(inp) -> None:
+    ''' Get all the LAPS password from domain pass'''
 
     computer_name: str = inp
 
@@ -21,7 +22,7 @@ def get_laps(inp) -> None:
     if query:
         print(f"[yellow][!] Getting LAPS information[/]")
         print(f"[italic white][:] LDAP Query: {search_filter}[/]")
-        print(f"[bold red][:] WARNING: If the result is blank, probably there is no LAPS information to retrive [/]\n")
+        print(f"[bold red][:] WARNING: If the result is blank, probably there is no LAPS information to retrive or your user does not have the required permissions [/]\n")
 
         for dn, attributes in query:
             for attr_name in attributes:

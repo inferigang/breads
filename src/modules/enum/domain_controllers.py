@@ -6,6 +6,8 @@ import ldap
 from src.handlers.ldap_connect import connect_and_fetch
 
 def get_domain_controllers() -> None:
+    ''' Get all the Domain Controllers name '''
+
     search_filter = '(primaryGroupID=516)' # 516 is the Primary ID for Domain Controllers computers
     query = connect_and_fetch(search_filter)
 

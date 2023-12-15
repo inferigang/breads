@@ -6,6 +6,8 @@ import ldap
 from src.handlers.ldap_connect import connect_and_fetch
 
 def get_admins() -> None:
+    ''' Get all the accounts from domain that has administrator privilege in somewhere '''
+
     search_filter = f'(&(&(objectCategory=person)(objectClass=user)(!(userAccountControl:1.2.840.113556.1.4.803:=2)))(adminCount=1))'
     query = connect_and_fetch(search_filter)
 

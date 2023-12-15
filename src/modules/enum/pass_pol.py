@@ -6,6 +6,8 @@ import ldap
 from src.handlers.ldap_connect import connect_and_fetch
 
 def get_pass_policy() -> None:
+    ''' Get the current password policy from the domain '''
+    
     search_filter = f'(objectClass=domainDNS)'
     query = connect_and_fetch(search_filter)
 
