@@ -10,7 +10,7 @@ def get_random_color() -> str:
     ''' Returns a random color from a predefined list '''
     
     color_list: list = [
-        "cyan", "yellow", "red", "blue", "white"
+        "cyan", "yellow", "red", "blue", "white", "magenta"
     ]
     
     return choice(color_list)
@@ -20,7 +20,7 @@ def get_version() -> None:
 
     current_version = """
 Breaking Active Directory Security
-v1.0.6 (beta) ~ by: inferigang"""
+v1.0.7 (beta) ~ by: inferigang"""
 
     print(f"[bold {get_random_color()}]{current_version}[/]\n")
 

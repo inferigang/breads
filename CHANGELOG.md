@@ -1,5 +1,11 @@
 # BREADS Changelog
 
+## 2023-12-14
+### 1.0.7
+- Added 'kerberoasting' command
+- Added color 'magenta' to banner generation
+- Added desc to all modules from enum and user folder
+
 ## 2023-12-09
 ### 1.0.6
 - Added 'laps' command (ex: laps / laps SRVMACHINENAME)
