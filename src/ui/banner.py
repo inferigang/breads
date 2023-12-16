@@ -20,7 +20,7 @@ def get_version() -> None:
 
     current_version = """
 Breaking Active Directory Security
-v1.0.7 (beta) ~ by: inferigang"""
+v1.0.8 (beta) ~ by: inferigang"""
 
     print(f"[bold {get_random_color()}]{current_version}[/]\n")
 

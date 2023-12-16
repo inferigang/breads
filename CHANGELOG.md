@@ -1,5 +1,10 @@
 # BREADS Changelog
 
+## 2023-12-16
+### 1.0.8
+- Added 'maq_acc_quota' command
+- Removed unused ldap and json library from modules
+
 ## 2023-12-14
 ### 1.0.7
 - Added 'kerberoasting' command

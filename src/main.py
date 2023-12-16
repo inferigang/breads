@@ -15,6 +15,8 @@ from src.modules.enum.all_users import get_all_users
 from src.modules.enum.disabled_accounts import get_all_disabled_users
 from src.modules.enum.laps import get_laps
 from src.modules.enum.kerberoasting import get_kerberoastable
+from src.modules.enum.maq_acc_quota import get_maq_acc_quota
+
 from src.modules.user.whoami import get_user_whoami
 
 class BreadsPrompt(Cmd):
@@ -100,8 +102,11 @@ class BreadsPrompt(Cmd):
 
     def do_kerberoasting(self, inp):
         ''' Search for kerberoastable users with filter and ignore krbtgt'''
-
         get_kerberoastable()
+
+    def do_get_maq_account_quota(self, inp):
+        ''' Retrive the Machine Account Quota value from the domain '''
+        get_maq_acc_quota()
 
 
 
