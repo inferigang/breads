@@ -1,8 +1,4 @@
 from rich import print
-
-import json
-import ldap
-
 from src.handlers.ldap_connect import connect_and_fetch
 
 def get_all_disabled_users() -> None:
