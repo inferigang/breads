@@ -1,8 +1,4 @@
 from rich import print
-
-import json
-import ldap
-
 from src.handlers.ldap_connect import connect_and_fetch
 
 def get_user_whoami(inp) -> None:
@@ -17,7 +13,7 @@ def get_user_whoami(inp) -> None:
     query = connect_and_fetch(search_filter)
 
     if query:
-        print(f"[yellow][!] Getting {username} account information[/]")
+        print(f"[yellow][!] Getting {username} account information[/]\n")
 
         for dn, attributes in query:
             for attr_name in attributes:
@@ -29,8 +25,20 @@ def get_user_whoami(inp) -> None:
                     'userAccountControl': 'UAC Value'
                 }
 
+                uac_values = {
+                    '512': 'Enabled - Password Expires',
+                    '514': 'Disabled - Password Expires',
+                    '66048': "Enabled - Password Doesn't Expires",
+                    '66050': "Disabled - Password Doesn't Expires"
+                }
+
                 for attribute, name in attributes_list.items():
                         if(attr_name == attribute):
-                            for attribute_name in attributes[attr_name]:
+                            for attribute_value in attributes[attr_name]:
 
-                                print(f"[cyan]* {name}: {attribute_name.decode('utf-8')} [/]")
+                                if "userAccountControl" in attr_name:
+                                    for uac_number, uac_context in uac_values.items():
+                                        if attribute_value.decode('utf-8') == uac_number:
+                                            print(f"[green][✔] User Account Control (UAC): {uac_context}[/]")
+                                else:
+                                    print(f"[green][✔] {name}: {attribute_value.decode('utf-8')}[/]")

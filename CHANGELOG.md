@@ -1,5 +1,13 @@
 # BREADS Changelog
 
+## 2023-12-28
+### 1.0.9
+- Improved UAC value context in 'whoami' command
+    - '512': 'Enabled - Password Expires'
+    - '514': 'Disabled - Password Expires'
+    - '66048': "Enabled - Password Doesn't Expires"
+    - '66050': "Disabled - Password Doesn't Expires"
+
 ## 2023-12-16
 ### 1.0.8
 - Added 'maq_acc_quota' command

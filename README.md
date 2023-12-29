@@ -56,6 +56,7 @@ ___
 - CrackMapExec
 - Impacket
 - BloodHound
+- NetExec
 
 <br>
 
