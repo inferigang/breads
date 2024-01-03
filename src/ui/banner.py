@@ -19,8 +19,8 @@ def get_version() -> None:
     ''' Prints the current version of BREADS '''
 
     current_version = """
-Breaking Active Directory Security
-v1.0.9 (beta) ~ by: inferigang"""
+Breaking Active Directory Security by @opps3c
+Version: v1.1.0"""
 
     print(f"[bold {get_random_color()}]{current_version}[/]\n")
 
@@ -30,7 +30,10 @@ def get_banner() -> None:
     banner_list: list = [
         "https://pastebin.com/raw/mhEASUuU",
         "https://pastebin.com/raw/CFEzbcVh",
-        "https://pastebin.com/raw/yVe8AAud"
+        "https://pastebin.com/raw/yVe8AAud",
+        "https://pastebin.com/raw/iKR7qDAM",
+        "https://pastebin.com/raw/fSzQMQ27",
+        "https://pastebin.com/raw/kGqfqWRc"
     ]
 
     banner = choice(banner_list)

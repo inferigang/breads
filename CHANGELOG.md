@@ -1,5 +1,11 @@
 # BREADS Changelog
 
+## 2024-01-03
+### 1.1.0
+- Added lastLogon and lastLogoff on 'whoami' command
+- Added support to convert Windows FileTime to DateTime (thanks to Mostafa-Hamdy-Elgiar) (helpers/filetime_to_date.py)
+- Added more 4 banners
+
 ## 2023-12-28
 ### 1.0.9
 - Improved UAC value context in 'whoami' command
