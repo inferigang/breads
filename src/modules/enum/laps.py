@@ -16,9 +16,8 @@ def get_laps(inp) -> None:
     query = connect_and_fetch(search_filter)
 
     if query:
-        print(f"[yellow][!] Getting LAPS information[/]")
-        print(f"[italic white][:] LDAP Query: {search_filter}[/]")
-        print(f"[bold red][:] WARNING: If the result is blank, probably there is no LAPS information to retrive or your user does not have the required permissions [/]\n")
+        print(f"[yellow][!][/] LAPS information:")
+        print(f"[yellow][!][/] If the result is blank, probably there is no LAPS information to retrive or your user does not have the required permissions\n")
 
         for dn, attributes in query:
             for attr_name in attributes:
@@ -34,4 +33,4 @@ def get_laps(inp) -> None:
                         if(attr_name == attribute):
                             for attribute_name in attributes[attr_name]:
 
-                                print(f"[cyan]* {name}: {attribute_name.decode('utf-8')} [/]")
+                                print(f"[green][+][/] [bright_white]{name}: {attribute_name.decode('utf-8')} [/]")

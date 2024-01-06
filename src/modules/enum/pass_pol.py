@@ -1,4 +1,7 @@
 from rich import print
+from rich.console import Console
+console = Console()
+
 from src.handlers.ldap_connect import connect_and_fetch
 
 def get_pass_policy() -> None:
@@ -8,7 +11,7 @@ def get_pass_policy() -> None:
     query = connect_and_fetch(search_filter)
 
     if query:
-        print(f"[yellow][!] Getting domain password policy[/]\n")
+        print(f"[yellow][!][/] [bright_white]Domain Password Policy:[/]")
 
         for dn, attributes in query:
             for attr_name in attributes:
@@ -22,4 +25,4 @@ def get_pass_policy() -> None:
                 for attribute, name in attributes_list.items():
                         if(attr_name == attribute):
                             for attribute_name in attributes[attr_name]:
-                                print(f"[cyan]* {name}: {attribute_name.decode('utf-8')} [/]")
+                                console.print(f"[green][+][/] [bright_white]{name}: {attribute_name.decode('utf-8')}[/]", highlight=False)

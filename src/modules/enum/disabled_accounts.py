@@ -8,10 +8,10 @@ def get_all_disabled_users() -> None:
     query = connect_and_fetch(search_filter)
 
     if query:
-        print(f"[yellow][!] Getting all disabled users on the domain [/]\n")
+        print(f"[yellow][!][/] Disabled Domain Users:")
 
         for dn, attrs in query:
             for attr_name in attrs:
                 if(attr_name == 'sAMAccountName') and not dn == None:
                     for user_name in attrs[attr_name]:
-                        print(f"[green]{user_name.decode('utf-8')}")
+                        print(f"[bright_white]{user_name.decode('utf-8')}[/]")

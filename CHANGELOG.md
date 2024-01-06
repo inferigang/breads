@@ -1,5 +1,13 @@
 # BREADS Changelog
 
+## 2024-01-05
+### 1.1.1
+- Changed colors from texts
+- Changed cmd apperance
+- Removed highlighted texts with console.print() from Rich lib
+- Fixed typo in mac_aqq_quota.py module
+- Added breads demo video (thanks asciinema)
+
 ## 2024-01-03
 ### 1.1.0
 - Added lastLogon and lastLogoff on 'whoami' command

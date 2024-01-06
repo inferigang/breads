@@ -10,10 +10,10 @@ def get_maq_acc_quota() -> None:
     query = connect_and_fetch(search_filter)
 
     if query:
-        print("[yellow][!] Getting the Machine Account Quota value from domain [/]")
+        print("[yellow][!][/] Domain Machine Account Quota value:")
        
         for dn, attrs in query:
             for attr_name in attrs:
                 if(attr_name == query_attribute):
                     for maq_account_quota_value in attrs[attr_name]:
-                        print(f"[green][!] Macchine Account Quota value: {maq_account_quota_value.decode('utf-8')} [/]")
+                        print(f"[green][+][/] [bright_white]Machine Account Quota value: {maq_account_quota_value.decode('utf-8')} [/]")

@@ -11,8 +11,8 @@ def get_kerberoastable() -> None:
     query = connect_and_fetch(search_filter)
 
     if query:
-        print("[yellow][!] Getting kerberoastable users from domain (excluding computers)[/]")
-        print("[bold red][:] WARNING: If the result is blank, there is no kerberoastable users to be listed [/]\n")
+        print("[yellow][!][/] [bright_white]Kerberoastable users from domain (excluding computers):[/]")
+        print("[yellow][!][/] [bright_white]If the result is blank, there is no kerberoastable users to be listed [/]")
 
 
         for dn, attrs in query:
@@ -26,4 +26,4 @@ def get_kerberoastable() -> None:
                 for attr, name in attributes_list.items():
                     if (attr_name == attr):
                         for attr_name in attrs[attr_name]:
-                            print(f"[cyan]* {name}: {attr_name.decode('utf-8')} [/]")
+                            print(f"[bright_white]{name}: {attr_name.decode('utf-8')}[/]")

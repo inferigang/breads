@@ -8,10 +8,10 @@ def get_pass_not_req() -> None:
     query = connect_and_fetch(search_filter)
 
     if query:
-        print(f"[yellow][!] Getting password not required users[/]\n")
+        print(f"[yellow][!][/] Users that doesn't require any password to logon:")
 
         for dn, attrs in query:
             for attr_name in attrs:
                 if attr_name == 'sAMAccountName' and dn is not None:
                     for user_name in attrs[attr_name]:
-                        print(f"[green]{user_name.decode('utf-8')}")
+                        print(f"[bright_white]{user_name.decode('utf-8')}[/]")

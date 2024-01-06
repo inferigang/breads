@@ -21,7 +21,7 @@ from src.modules.user.whoami import get_user_whoami
 
 class BreadsPrompt(Cmd):
 
-    prompt = f"breads# "
+    prompt = f"breads # "
     intro = get_banner()
 
     def emptyline(self):
@@ -107,8 +107,6 @@ class BreadsPrompt(Cmd):
     def do_get_maq_account_quota(self, inp):
         ''' Retrive the Machine Account Quota value from the domain '''
         get_maq_acc_quota()
-
-
 
     # Allow user to exit from the prompt using CTRL+D
     do_EOF = do_exit

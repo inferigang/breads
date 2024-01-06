@@ -15,10 +15,10 @@ def create_breads_directory() -> None:
 
     if not path.exists(BREADS_FOLDER):
         mkdir(BREADS_FOLDER)
-        print("[green][✔] .breads folder created in user home directory[/]")
+        print("[green][+][/] [bright_white].breads folder created in user home directory[/]")
         return True
     else:
-        print("[yellow][!] .breads folder already exists on user home directory[/]")
+        print("[yellow][!][/] [bright_white].breads folder already exists on user home directory[/]")
         pass
 
 def create_profile_folder() -> None:
@@ -29,23 +29,21 @@ def create_profile_folder() -> None:
     profile_name_input = Prompt.ask("[yellow]# Type the profile name[/]")
     profile_name = profile_name_input
 
-    print(f"\n[green][✔] Creating [b]{profile_name}'s[/] profile folder [/]")
+    print(f"\n[green][✔][/] [bright_white]Creating [b]{profile_name}'s[/] profile folder [/]")
     create_breads_directory()
 
     folder_name = f"{BREADS_FOLDER}/{profile_name}"
 
     if not path.exists(folder_name):
         mkdir(folder_name)
-        print(f"[green][✔] {folder_name} folder created[/]\n")
+        print(f"[green][+][/] [bright_white]{folder_name} folder created[/]")
         create_profile_base_json()
     else:
-        print(f"[red][✖] {folder_name} profile already exists[/]\n")
+        print(f"[red][!][/] [bright_white]{folder_name} profile already exists[/]")
         return
 
 def create_profile_base_json() -> None:
     ''' Create the base JSON file to be used by the profile to store the information collected '''
-
-    print("[yellow][!] Creating base profile JSON file on profile folder... [/]")
 
     base_profile = {
         "profile_name": profile_name,
@@ -62,11 +60,11 @@ def create_profile_base_json() -> None:
             json.dump(base_profile, base_profile_json, ensure_ascii=False, indent=4)
             base_profile_json.truncate()
 
-            print(f"[green][✔] Created base profile JSON file ({base_profile_json_path})[/]")
-            print(f"[yellow][!] Profile Name: {profile_name} - Profile UUID: {PROFILE_UUID}[/]")
+            print(f"[green][+][/] [bright_white]Created base profile JSON file ({base_profile_json_path})[/]")
+            print(f"[yellow][!][/] [bright_white]Profile name: [b]{profile_name}[/] - UUID: [b]{PROFILE_UUID}[/][/]")
 
     except Exception as error:
-        print(f"[✖] Error when trying to create the base profile JSON file: {error}")
+        print(f"[red][!][/] [bright_white]Error when trying to create the base profile JSON file: {error}[/]")
         return False
 
 
@@ -74,7 +72,7 @@ def load_profile() -> None:
     ''' Loads a profile based on user input if at least one exists on breads '''
 
     if not path.exists(BREADS_FOLDER):
-        print(f"[red][✖] .breads directory not found [/]\n")
+        print(f"[red][!][/] .breads directory not found\n")
         return
 
     if path.exists(BREADS_FOLDER):
@@ -82,7 +80,7 @@ def load_profile() -> None:
         folders_list = listdir(BREADS_FOLDER)
 
         if not folders_list:
-            print(f"[red][✖] No profiles found on .breads directory. Create one with 'create_profile' command[/]\n")
+            print(f"[red][!][/] No profiles found on .breads directory. Create one with 'create_profile' command\n")
             return
 
         for folder_name in folders_list:
@@ -92,7 +90,7 @@ def load_profile() -> None:
         for folder_name in folders_list:
 
             if(load_user_input == folder_name):
-                print(f"[green][✔] Profile [b]{folder_name}'s[/b] selected successfully![/]")
+                print(f"[green][+][/] [bright_white]Profile [b]{folder_name}'s[/b] selected successfully![/]")
                 environ["breads_profile"] = folder_name
 
                 profile_json_file = f"{BREADS_FOLDER}/{get_current_profile()}/settings.json"
@@ -105,12 +103,12 @@ def load_profile() -> None:
                     password = existing_data['password']
 
                     if(len(host) > 2): # If the length of host variable on profile json file is greater than 2 we can assume we already have an host defined
-                        print(f"[cyan]* Profile settings: {host}, {username}, {password}[/]")
-                        keep_data_input = Prompt.ask("[yellow][!] There is already information in this profile, do you want to keep it? [Y/N][/]")
+                        print(f"[yellow][!][/] [bright_white]Profile settings: {host}, {username}, {password}[/]")
+                        keep_data_input = Prompt.ask("[yellow][!][/] [bright_white]There is already information stored in this profile, do you want to keep it? [Y/N][/]")
                         keep_data_input = keep_data_input.lower()
 
                         if(keep_data_input == 'y'):
-                            print("[yellow][!] Keeping current data...[/]\n")
+                            print("[yellow][!][/] [bright_white]Not changing current configuration[/]\n")
                             return
                         else:
                             pass
@@ -131,8 +129,8 @@ def load_profile() -> None:
                         json.dump(existing_data, json_file, ensure_ascii=False, indent=4)
                         json_file.truncate()
 
-                        print(f"[green][✔] Profile information stored successfully![/]\n")
+                        print(f"[green][+][/] [bright_white]Profile information stored successfully![/]\n")
                     except Exception as error:
-                        print(f"[red][✖] Error when trying to store profile information: {error}[/]")
+                        print(f"[red][!][/] [bright_white]Error when trying to store profile information: {error}[/]")
             else:
-                print(f"[red][✖] Profile not found, check if the name is correct")
+                print(f"[red][!][/] [bright_white]Profile not found, check if the name is correct[/]")

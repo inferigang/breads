@@ -40,7 +40,7 @@ ___
 <br>
 
 ## 🎥 Preview
-<img src="https://i.imgur.com/MaflBgp.png" width=780>
+[![asciicast](https://asciinema.org/a/630089.svg)](https://asciinema.org/a/630089)
 
 <br>
 
