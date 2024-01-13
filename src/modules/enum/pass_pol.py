@@ -8,21 +8,23 @@ def get_pass_policy() -> None:
     ''' Get the current password policy from the domain '''
     
     search_filter = f'(objectClass=domainDNS)'
+    attributes = ['minPwdLength', 'lockoutThreshold', 'lockoutDuration']
     query = connect_and_fetch(search_filter)
 
     if query:
         print(f"[yellow][!][/] [bright_white]Domain Password Policy:[/]")
 
-        for dn, attributes in query:
-            for attr_name in attributes:
+        for _dn, values in query:
+            for attribute_name in values:
 
-                attributes_list = {
-                    'minPwdLength': 'Minimum Password Length', 
-                    'lockoutThreshold': 'Lockout Threshold', 
-                    'lockoutDuration': 'Lockout Duration (Milliseconds)',
-                }
+                for attribute in attributes:
+                    if attribute_name == attribute:
+                        
+                        for value in values[attribute]:
+                            value = value.decode('utf-8')
 
-                for attribute, name in attributes_list.items():
-                        if(attr_name == attribute):
-                            for attribute_name in attributes[attr_name]:
-                                console.print(f"[green][+][/] [bright_white]{name}: {attribute_name.decode('utf-8')}[/]", highlight=False)
+                            if attribute == 'lockoutThreshold' and value == '0':
+                                console.print(f"[green][+][/] [bright_white]{attribute}:[/] [bright_yellow]{value} - Password Spray possiblity detected[/]", highlight=False)
+                            else:
+                                console.print(f"[green][+][/] [bright_white]{attribute}: {value}[/]", highlight=False)
+

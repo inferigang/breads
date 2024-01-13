@@ -12,7 +12,7 @@ def get_maq_acc_quota() -> None:
     if query:
         print("[yellow][!][/] Domain Machine Account Quota value:")
        
-        for dn, attrs in query:
+        for _dn, attrs in query:
             for attr_name in attrs:
                 if(attr_name == query_attribute):
                     for maq_account_quota_value in attrs[attr_name]:

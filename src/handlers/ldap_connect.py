@@ -1,4 +1,5 @@
 from rich import print
+from rich.progress import Progress
 
 import json
 import ldap
@@ -26,25 +27,33 @@ def connect_and_fetch(search_filter):
         baseDN = "DC=" + ",DC=".join(baseDN.split("."))
         ldapURI = f"ldaps://{hostname}"
 
-        username = username.split('/')[1]  # Get the actual username without the domain
+        username = username.split('/')[1]  # Get the actual username without the FQDN
 
-        print(f"[yellow][!][/] [bright_white]Connecting to {ldapURI} as [b]{username}:{password}[/]\n")
+        print(f"[yellow][!][/] [bright_white]Connecting to {ldapURI} as [b]{username}:{password}[/]")
 
-        ldap.set_option(ldap.OPT_X_TLS_REQUIRE_CERT, ldap.OPT_X_TLS_NEVER)
-        ldap.set_option(ldap.OPT_REFERRALS, 0)
-        
-        connect = ldap.initialize(ldapURI)
-        connect.set_option(ldap.OPT_REFERRALS, 0)    
-        connect.simple_bind_s(ldap_username, password)
+        with Progress() as progress:
+             task = progress.add_task("[cyan][*][/] [bright_white]Executing command[/]\n", total=100)
 
-        search_scope = ldap.SCOPE_SUBTREE
+             while not progress.finished:
+                progress.update(task, advance=10)
 
-        try:
-            query = connect.search_s(baseDN, search_scope, search_filter)
-            return query
-        
-        except ldap.LDAPError as error:
-            print(f"[red][!][/] [bright_white]LDAP Error: {error}[/]")
-        
-        finally:
-            connect.unbind_s()
+                ldap.set_option(ldap.OPT_X_TLS_REQUIRE_CERT, ldap.OPT_X_TLS_NEVER)
+                ldap.set_option(ldap.OPT_REFERRALS, 0)
+                
+                connect = ldap.initialize(ldapURI)
+                connect.set_option(ldap.OPT_REFERRALS, 0)    
+                connect.simple_bind_s(ldap_username, password)
+
+                search_scope = ldap.SCOPE_SUBTREE
+
+                try:
+                    query = connect.search_s(baseDN, search_scope, search_filter)
+                    progress.update(task, advance=40)
+                    return query
+                
+                except ldap.LDAPError as error:
+                    print(f"[red][!][/] [bright_white]LDAP Error: {error}[/]")
+                
+                finally:
+                    connect.unbind_s()
+                    progress.update(task, advance=50)

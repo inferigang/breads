@@ -1,5 +1,3 @@
-# Time is stored in Windows Filetime and starts in January 1, 1601 as we can see on https://learn.microsoft.com/en-us/windows/win32/api/minwinbase/ns-minwinbase-filetime?redirectedfrom=MSDN
-
 from rich import print
 from rich.console import Console
 console = Console()
@@ -19,30 +17,34 @@ def get_user_whoami(inp) -> None:
     query = connect_and_fetch(search_filter)
 
     if query:
-        print(f"[yellow][!][/] Whoami: {username}")
+        print(f"[yellow][!][/] Whoami: [bold white]{username}[/]")
 
         for dn, attributes in query:
             for attr_name in attributes:
+
+                # Time is stored in Windows Filetime and starts in January 1, 1601 as we can see on https://learn.microsoft.com/en-us/windows/win32/api/minwinbase/ns-minwinbase-filetime?redirectedfrom=MSDN
+                # ^ Used to format lastLogon and lastLogoff time
 
                 attributes_list = {
                     'sAMAccountName': 'sAMAccountName', 
                     'distinguishedName': 'distinguishedName',
                     'memberOf': 'Member of',
-                    'lastLogon': 'Last Logon (Nanoseconds)',
+                    'lastLogon': 'Last Logon (Nanoseconds)', 
                     'lastLogoff': 'Last Logoff' ,
                     'userAccountControl': 'UAC Value'
                 }
 
                 uac_values = {
-                    '512': 'User is Enabled - Password Expires',
-                    '514': 'User is Disabled - Password Expires',
-                    '66048': "User is Enabled - [bold yellow]Password Never Expires[/]",
-                    '66050': "User is Disabled - [bold yellow]Password Never Expires[/]"
+                    '512': '[bold green]User is Enabled[/] - Password Expires',
+                    '514': '[bold red]User is Disabled[/] - Password Expires',
+                    '66048': "[bold green]User is Enabled[/] - [bold yellow]Password Never Expires[/]",
+                    '66050': "[bold red]User is Disabled[/] - [bold yellow]Password Never Expires[/]"
                 }
 
                 for attribute, name in attributes_list.items():
                         if(attr_name == attribute):
                             for attribute_value in attributes[attr_name]:
+                                
                                 if "userAccountControl" in attr_name:
                                     for uac_number, uac_context in uac_values.items():
                                         if attribute_value.decode('utf-8') == uac_number:
@@ -62,6 +64,5 @@ def get_user_whoami(inp) -> None:
                                         else:
                                             last_logoff_datetime = filetime_to_dt(int(last_logoff_filetime))
                                             console.print(f"[green][+][/] Last Logoff: [bright_white]{last_logoff_datetime}[/]", highlight=False)
-
                                 else:
                                     print(f"[green][+][/] {name}: [bright_white]{attribute_value.decode('utf-8')}[/]")

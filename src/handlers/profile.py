@@ -72,11 +72,10 @@ def load_profile() -> None:
     ''' Loads a profile based on user input if at least one exists on breads '''
 
     if not path.exists(BREADS_FOLDER):
-        print(f"[red][!][/] .breads directory not found\n")
+        print(f"[red][!][/] .breads directory not found. Initialize one with 'create_profile' command\n")
         return
 
     if path.exists(BREADS_FOLDER):
-
         folders_list = listdir(BREADS_FOLDER)
 
         if not folders_list:
@@ -88,9 +87,8 @@ def load_profile() -> None:
 
         load_user_input = Prompt.ask("\n# Type the profile name to be used")
         for folder_name in folders_list:
-
             if(load_user_input == folder_name):
-                print(f"[green][+][/] [bright_white]Profile [b]{folder_name}'s[/b] selected successfully![/]")
+                print(f"[green][+][/] [bright_white]Profile [b]{folder_name}'s[/b] selected successfully!. Load it with the 'load_profile' command[/]")
                 environ["breads_profile"] = folder_name
 
                 profile_json_file = f"{BREADS_FOLDER}/{get_current_profile()}/settings.json"

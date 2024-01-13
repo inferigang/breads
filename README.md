@@ -25,8 +25,8 @@ ___
 
 ### Not recommended
 1. Clone the repository with: `git clone https://github.com/inferigang/breads.git`
-2. Install the libraries with: `pip3 install -r requirements.txt` or `python3 setup.py install`
-3. Run BREADS with: `python3 src/main.py`
+2. Install the libraries with: `python3 setup.py install`
+3. Run BREADS with: `breads-ad`
 
 <br>
 
@@ -45,10 +45,12 @@ ___
 <br>
 
 ## 📚 To-Do
-- [ ] Add more modules (WIP)
 - [ ] Improve profile creation
 - [ ] Store data on SGBD
 - [ ] Create a UI
+
+### Modules
+- Enum ADCS (i don't have an lab with ADCS to test this yet)
 
 <br>
 

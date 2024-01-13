@@ -5,7 +5,7 @@ this_directory = Path(__file__).parent
 
 setup(
     name='breads-ad',
-    version='1.1.1',
+    version='1.1.2',
     author='oppsec',
     author_email='opps3c@gmail.com',
     description='Breaking Active Directory Security (BREADS) is a tool design to attack Active Directory environments',

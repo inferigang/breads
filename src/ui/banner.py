@@ -10,19 +10,12 @@ def get_random_color() -> str:
     ''' Returns a random color from a predefined list '''
     
     color_list: list = [
-        "cyan", "yellow", "red", "blue", "white", "magenta"
+        "cyan", "yellow", "red", "blue", "white", "magenta", "green",
+        "italic cyan", "italic yellow", "italic red", "italic blue", "italic white", "italic magenta", "italic green",
+        "bold cyan", "bold yellow", "bold red", "bold blue", "bold white", "bold magenta", "bold green",
     ]
     
     return choice(color_list)
-
-def get_version() -> None:
-    ''' Prints the current version of BREADS '''
-
-    current_version = """
-Breaking Active Directory Security by @opps3c
-Version: v1.1.1"""
-
-    print(f"[bold {get_random_color()}]{current_version}[/]\n")
 
 def get_banner() -> None:
     ''' Return BREADS banner url '''
@@ -42,8 +35,9 @@ def get_banner() -> None:
         response = get(banner, verify=False)
         banner = response.text
 
-        print(f"[bold {get_random_color()}]{banner}[/]")
-        return get_version()
+        current_version = "Breaking Active Directory Security by @opps3c\nVersion: v1.1.2"
+        print(f"[bold {get_random_color()}]{banner}\n{current_version}\n\nType 'help' to list commands[/]")
+
     except RequestException as error:
-        print(f"[red]✖ Could not retrive banner from pastebin: {error}[/]")
+        print(f"[red][!][/][bright_white] Error when requesting banner from pastebin: {error}[/]")
         pass
