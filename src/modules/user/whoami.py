@@ -38,7 +38,9 @@ def get_user_whoami(inp) -> None:
                     '512': '[bold green]User is Enabled[/] - Password Expires',
                     '514': '[bold red]User is Disabled[/] - Password Expires',
                     '66048': "[bold green]User is Enabled[/] - [bold yellow]Password Never Expires[/]",
-                    '66050': "[bold red]User is Disabled[/] - [bold yellow]Password Never Expires[/]"
+                    '66050': "[bold red]User is Disabled[/] - [bold yellow]Password Never Expires[/]",
+                    '1114624': '[bold green]User is Enabled[/] - [bold yellow]Password Never Expires[/] - [bold yellow]User Not Delegated[/]',
+                    '1049088': "[bold green]User is Enabled[/] - Password Expires - [bold yellow]User Not Delegated[/]"
                 }
 
                 for attribute, name in attributes_list.items():

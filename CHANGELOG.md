@@ -1,5 +1,10 @@
 # 🍞 BREADS Changelog
 
+## 2024-01-24
+### 1.1.3 🎉
+- Fixed LDAP pagination error
+- Added support to 2 more UAC values (1114624 and 1049088)
+
 ## 2024-01-08
 ### 1.1.2 🎉
 - Added progress bar (executes only in LDAP connection moment)

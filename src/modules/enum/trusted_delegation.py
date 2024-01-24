@@ -13,7 +13,7 @@ def get_trusted_delegate() -> None:
 
     if query:
         print("[yellow][!][/] [bright_white]All accounts with msDS-AllowedToDelegateTo located:[/]")
-        print("[yellow][!][/] [bright_white]If the result is blank, there is no accounts with msDS-AllowedToDelegateTo rights [/]")
+        print("[yellow][!][/] [bright_white]If the result is blank, there is no accounts or computers with msDS-AllowedToDelegateTo rights [/]")
 
 
         for _dn, values in query:
