@@ -6,7 +6,7 @@ MODULE_PROTOCOL = ['ldap']
 def get_trusted_delegate() -> None:
     ''' Retrieve all the accounts that has msds-allowedtodelegateto enabled '''
     
-    search_filter = "(&(objectClass=User)(msDS-AllowedToDelegateTo=*))"
+    search_filter = "(userAccountControl:1.2.840.113556.1.4.803:=524288)"
     
     attributes = ['sAMAccountName']
     query = connect_and_fetch(search_filter)
