@@ -1,5 +1,13 @@
 # 🍞 BREADS Changelog
 
+## 2024-02-07
+### 1.1.4 🎉
+- Removed minimum python version installed from setup.py
+- Removed 'Name' and 'samAccountName' from get_dcs
+- Removed 'samAccountName' from get_users
+- Fixed error message printing on 'exit' command
+- Added 'get_adcs' module
+
 ## 2024-01-24
 ### 1.1.3 🎉
 - Fixed LDAP pagination error

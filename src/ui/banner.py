@@ -35,7 +35,7 @@ def get_banner() -> None:
         response = get(banner, verify=False)
         banner = response.text
 
-        current_version = "Breaking Active Directory Security by @opps3c\nVersion: v1.1.3"
+        current_version = "Breaking Active Directory Security by @opps3c\nVersion: v1.1.4"
         print(f"[bold {get_random_color()}]{banner}\n{current_version}\n\nType 'help' to list commands[/]")
 
     except RequestException as error:
