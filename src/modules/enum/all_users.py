@@ -19,4 +19,4 @@ def get_users() -> None:
                         
                         for value in values[attribute]:
                             value = value.decode('utf-8')
-                            print(f"[green][+][/] [bright_white]{attribute}: {value}[/]")
+                            print(f"[bright_white]{value}[/]")
