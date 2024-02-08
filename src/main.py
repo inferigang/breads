@@ -4,7 +4,7 @@ from cmd import Cmd
 from rich import print
 from datetime import datetime
 
-import os
+from os import sys
 
 from src.ui.banner import get_banner
 from src.handlers.profile import create_profile_folder, load_profile
@@ -22,6 +22,7 @@ from src.modules.enum.maq_acc_quota import get_maq_acc_quota
 from src.modules.enum.obsolete import get_obsolete
 from src.modules.enum.all_computers import get_computers
 from src.modules.enum.trusted_delegation import get_trusted_delegate
+from src.modules.enum.adcs import get_adcs
 
 from src.modules.user.whoami import get_user_whoami
 
@@ -39,7 +40,7 @@ class BreadsPrompt(Cmd):
     def do_exit(self, inp):
         ''' Exit the program '''
         print(f"[red][✖] Exiting... [/]")
-        return True
+        sys.exit(0)
 
     def do_banner(self, inp):
         ''' Return a random banner from get_banner function '''
@@ -59,7 +60,7 @@ class BreadsPrompt(Cmd):
 
     def do_get_dcs(self, inp):
         ''' Return domain controllers machine name '''
-        get_domain_controllers()
+        get_domain_controllers(inp)
 
     def do_get_admins(self, inp):
         ''' Return administrators usernames '''
@@ -108,6 +109,10 @@ class BreadsPrompt(Cmd):
     def do_trusted_delegate(self, inp):
         ''' Retrieve all the accounts that has msds-allowedtodelegateto enabled '''
         get_trusted_delegate()
+
+    def do_get_adcs(self, inp):
+        ''' Retrieve the PKI Enrollment Servers from domain '''
+        get_adcs()
 
     # Allow user to exit from the prompt using CTRL+D
     do_EOF = do_exit
