@@ -26,7 +26,7 @@ def connect_and_fetch(search_filter, page_size=100):
         ldap_username = f"{username.split('/')[1]}@{baseDN}"
 
         baseDN = "DC=" + ",DC=".join(baseDN.split("."))
-        ldapURI = f"ldaps://{hostname}"
+        ldapURI = f"ldap://{hostname}"
 
         username = username.split('/')[1]  # Get the actual username without the FQDN
 
