@@ -4,7 +4,7 @@ from src.handlers.ldap_connect import connect_and_fetch
 def get_pass_not_req() -> None:
     ''' Get users from domain that does not require a password to authenticate '''
 
-    search_filter = f'(&(objectClass=user)(userAccountControl:1.2.840.113556.1.4.803:=32))'
+    search_filter = f'(userAccountControl:1.2.840.113556.1.4.803:=32)'
     attributes = 'sAMAccountName'
     query = connect_and_fetch(search_filter)
 
