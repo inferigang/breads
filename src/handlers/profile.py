@@ -29,7 +29,11 @@ def create_profile_folder() -> None:
     profile_name_input = Prompt.ask("[yellow]# Type the profile name[/]")
     profile_name = profile_name_input
 
-    print(f"\n[green][✔][/] [bright_white]Creating [b]{profile_name}'s[/] profile folder [/]")
+    if(len(profile_name) == 0):
+        print("[red][!][/] [bright_white]You need to specify a name for the profile [/]")
+        return True
+
+    print(f"\n[green][+][/] [bright_white]Creating [b]{profile_name}'s[/] profile folder [/]")
     create_breads_directory()
 
     folder_name = f"{BREADS_FOLDER}/{profile_name}"
