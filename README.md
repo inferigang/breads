@@ -1,3 +1,8 @@
+# ⚠️ PROJECT MOVED ⚠️
+<p> This repository is outdated, the most updated and current project is now on <a href="https://github.com/oppsec/breads">https://github.com/oppsec/breads</a> </p>
+
+<br><br>
+
 <div align="center">
   <h1> 🍞 BREADS </h1>
   <img src="https://i.imgur.com/uGdGDeo.png" width=690>
